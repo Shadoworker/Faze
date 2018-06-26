@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"> 
+    <link rel="stylesheet" type="text/css" href="../vendors/materialize/materialize.css">
+    <link rel="stylesheet" type="text/css" href="../vendors/materialize/main.css">
+    <link rel="stylesheet" type="text/css" href="../vendors/codemirror/codemirror.css">
+    <link rel="stylesheet" type="text/css" href="../vendors/codemirror/monokai.css">
+    <link rel="stylesheet" type="text/css" href="../vendors/codemirror/show-hint.css">
+    <link rel="stylesheet" type="text/css" href="../vendors/codemirror/dialog.css">
+    <link rel="stylesheet" type="text/css" href="../vendors/scroll/jquery.mCustomScrollbar.css">
+
+  </head>
+  <body>
+
+  <style type="text/css">
+   html
+   {
+    background-color: #f2f2f2;
+   }
+    body
+    {
+     /* box-shadow: 0px 3px #ececec;
+      height: 100%;*/
+    }
+  </style>
+     
+     <div class="row">
+       
+       <headerTag></headerTag>
+       
+       <!-- <leftMenuTag></leftMenuTag> -->
+       <!-- <fileBarTag></fileBarTag> -->
+
+       <sceneBoxTag></sceneBoxTag>
+       <objectsBoxTag></objectsBoxTag>
+       <statesBoxTag></statesBoxTag>
+       <setsBoxTag></setsBoxTag>
+
+
+       <!-- <sceneBoxTag></sceneBoxTag> -->
+
+     </div>
+
+      <!-- ******************COMPONENTS ***********************-->
+
+    <script type="riot/tag" src="../components/headerTag.tag.html"></script>
+    <script type="riot/tag" src="../components/leftMenuTag.tag.html"></script>
+    <script type="riot/tag" src="../components/fileBarTag.tag.html"></script>
+    <script type="riot/tag" src="../components/fileItemTag.tag.html"></script>
+
+
+    <script type="riot/tag" src="../components/sceneBoxTag.tag.html"></script>
+    <script type="riot/tag" src="../components/objectsBoxTag.tag.html"></script>
+    <script type="riot/tag" src="../components/statesBoxTag.tag.html"></script>
+    <script type="riot/tag" src="../components/setsBoxTag.tag.html"></script>
+    <script type="riot/tag" src="../components/sceneBoxTag.tag.html"></script>
+    <!-- <script type="riot/tag" src="../components/drawCanvasTag.tag.html"></script> -->
+
+
+      <!-- **************************************************** -->
+
+
+     
+ 
+  
+   <script>window.$ = window.jQuery = require('../vendors/jquery/jquery.js');</script>
+   <script src="../vendors/fabric/fabric.js"></script>
+   <script src="../vendors/scroll/jquery.mCustomScrollbar.js"></script>
+   <script type="text/javascript" src="../vendors/phaser/phaser.js"></script>
+   <!-- Codemirror -->
+   <script type="text/javascript" src="../vendors/codemirror/codemirror.js"></script>
+   <script type="text/javascript" src="../vendors/codemirror/search.js"></script>
+   <script type="text/javascript" src="../vendors/codemirror/searchcursor.js"></script>
+   <script type="text/javascript" src="../vendors/codemirror/sublime.js"></script>
+   <script type="text/javascript" src="../vendors/codemirror/matchbrackets.js"></script>
+   <script type="text/javascript" src="../vendors/codemirror/closebrackets.js"></script>
+   <script type="text/javascript" src="../vendors/codemirror/dialog.js"></script>
+   <script type="text/javascript" src="../vendors/codemirror/show-hint.js"></script>
+   <script type="text/javascript" src="../vendors/codemirror/javascript-hint.js"></script>
+   <script src="../vendors/codemirror/javascript.js"></script>
+
+   <!-- Codemirror -->
+
+
+
+
+   <script type="text/javascript" src="../process/process_upload.js"></script>
+   <script src="../vendors/riot/riot.min.js"></script>
+   
+
+   <script >
+      
+      var Store = function(){
+          riot.observable(this)
+      }
+
+      riot.store = new Store();
+     
+
+      const ipc = require('electron').ipcRenderer;
+      var fs = require('fs');
+
+      riot.mount('headerTag', {
+                        wicons : [ 
+                                    {active:true},
+                                    {active:true} , 
+                                    {active:true } 
+                                  ],
+                        showicon :true,
+                        darkTheme: true
+                       });
+       riot.mount('leftMenuTag');
+       riot.mount('fileBarTag');
+
+
+       riot.mount('sceneBoxTag');
+       riot.mount('objectsBoxTag');
+       riot.mount('statesBoxTag');
+       riot.mount('setsBoxTag');
+
+       riot.mount('drawBoxTag');
+       // riot.mount('drawCanvasTag');
+       
+        
+    ////////////////////////////////////////////////////
+
+    // $
+
+   </script>
+   
+
+  </body>
+</html>

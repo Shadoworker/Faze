@@ -1,0 +1,13 @@
+{
+	"content": 
+	         [
+               {"title":"test1"},
+               {"items":
+               	  [
+                     {"id":"ref_1","name":"object1"},
+                     {"id":"ref_2","name":"object2"},
+                     {"id":"ref_3","name":"object3"}
+                  ]},
+                {"creation":"17/02/2017", "update":"18/02/2017"}
+	         ]
+}

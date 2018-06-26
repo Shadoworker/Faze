@@ -1,0 +1,128 @@
+<objectsBoxTag>
+	
+   
+   	<div class="col center userBox objectsBoxTag  z-depth-1">
+  	   <div class="containerBox">
+    
+         <div class="col s12" style="padding: 0px;margin-top: 10px;">
+            
+            <div class="col s6 toolobj">
+              <span>
+                <img src="../assets/objicon.png" id="rect">
+                <span>RECT</span>
+              </span>
+            </div>
+
+            <div class="col s6 toolobj">
+              <span>
+                <img src="../assets/objicon.png"  id="circle">
+                <span>CIRC.</span>
+              </span>
+            </div>
+            
+            <div class="col s6 toolobj">
+              <span>
+                <img src="../assets/objicon.png" id="img">
+                <span>IMG</span>
+              </span>
+            </div>
+            
+            <div class="col s6 toolobj">
+              <span>
+                <img src="../assets/objicon.png" id="sprite">
+                <span>SPRITE</span>
+              </span>
+            </div>
+            
+            <div class="col s6 toolobj">
+              <span>
+                <img src="../assets/objicon.png">
+                <span>STAGE</span>
+              </span>
+            </div>
+            
+            <div class="col s6 toolobj">
+              <span>
+                <img src="../assets/objicon.png">
+                <span>FILE</span>
+              </span>
+            </div>
+            
+            <div class="col s6 toolobj">
+              <span>
+                <img src="../assets/objicon.png">
+                <span>EXTRA</span>
+              </span>
+            </div>
+
+            
+
+           
+ 
+         </div>
+
+       </div>
+
+  	</div>
+
+
+   <style type="text/css">
+    
+    .toolobj>span>img
+    {
+      width: 100%; height: auto;
+    }
+    .toolobj>span>span
+    {
+        position: absolute;
+        top: 20%;
+        left: 0px;
+        width: 100%;
+        font-size: 14px;
+        text-align: center;
+        font-family: 'front';
+    }
+    .toolobj
+    {
+      position: relative;
+    }
+    .objectsBoxTag
+    {
+
+      position: absolute;
+      top: 80px;
+      width: 150px;
+      height: 310px;
+      /*cursor: move;*/
+      left: 2%;
+      border-radius: 5px 5px;
+      background-color: #fff;
+    }
+   
+
+   </style>
+  
+   <script>
+  	   //On.mount !important for events and effects
+  	   var self = this;
+
+  	   this.on('mount', function() 
+  	   {
+            self.rectcount = -1;
+
+            $('#rect').on('click', function(){
+                self.rectcount+=1;
+                self.update();
+                var rectname = 'rect'+(self.rectcount);
+                console.log(rectname)
+                riot.store.trigger('addrect', rectname);
+
+            })
+ 
+         
+       })
+ 
+
+  </script>
+
+</objectsBoxTag>

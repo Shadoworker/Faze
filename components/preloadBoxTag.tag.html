@@ -1,0 +1,150 @@
+<preloadBoxTag>
+  
+   
+    <div class="col s12 center preloadBox z-depth-2" >
+      
+     <div class="col s12 full" style="margin-top: 50px;">
+       <div class="col s6">
+         <span style="float: left;margin-left: 15px;font-family: 'front';color: #fff; ">EXISTING PROJECT</span>
+         <input id="preloadInput" type="text" name="">
+       </div>
+       <div class="col s6">
+         <span style="float: right;margin-right: 15px;font-family: 'front';color: #fff; ">NEW PROJECT</span>
+         <input id="preloadInput" type="text" name="">
+       </div>
+     </div>
+     
+     <div class="col s12">
+       <div class="col" style="width: 49%;" >
+         
+         <img src="../assets/objicon.png">
+
+       </div>
+       <div class="col" style="width: 2%;">
+         <hr width="600" style="display: inline;">
+       </div>
+       <div class="col" style="width: 49%;">
+         
+
+         <div class="col s12" style="margin-top: 0px;">
+          <h6 style="font-family: 'front' ; color :#fff;">TEMPLATES</h6>
+         </div>
+         <div class="col s12 full" style="margin-top: 0px;position: relative;    border-left: solid 0.5px rgba(255,255,255,0.5);">
+            <div class="col arrowscontainer">
+             <span style="float: left;">
+               <img style="width: 35px;pointer-events: painted;margin-left: 10px;" src="../assets/objicon.png">
+             </span>
+             <span style="float: right;">
+               <img style="width: 35px;pointer-events: painted;" src="../assets/objicon.png">
+             </span>
+            </div>
+            <div class="col itemscontainer">
+              <div class="col item z-depth-2 z-depth-2 active">
+                SAMPLE
+              </div>
+              <div class="col item z-depth-2 z-depth-2">
+                Mob Port
+              </div>
+              <div class="col item z-depth-2 z-depth-2">
+                Mob Lands
+              </div>
+              <div class="col item z-depth-2 z-depth-2">
+                Brows
+              </div>
+              <div class="col item z-depth-2 z-depth-2">
+                Custom
+              </div>
+            </div> 
+           </div>
+
+           <div class="col s12" style="margin-top: 15px;">
+             <a class="btn" style="float: right;background-color: #d40055;">CREATE</a>
+           </div>
+
+
+       </div>
+     </div>
+     
+      
+    </div>
+
+
+
+
+    
+
+  <style type="text/css">
+  div.arrowscontainer
+  {
+    position: absolute;
+    width: 100%;
+    top: 42%;
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  input#preloadInput
+  {width: 90%;}
+  div.item
+  { width: 240px;
+    height: 200px;
+    float: left;
+    cursor: pointer;
+    border-radius: 5px 5px;
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    background-color: #f2f2f2;
+    transition: transform 0.2s ease-in;
+  }
+  div.item.active
+  {  
+    border-radius: 5px 5px;
+    transform: scale(1.085);
+    border:solid 1px #d40055;
+    transition: transform 0.2s ease-in;
+  }
+  div.item:hover
+  {
+    transform: scale(1.085);
+    transition: transform 0.2s ease-in;
+    border:solid 1px #d40055;
+
+  }
+
+  div.itemscontainer
+  {
+    width: 1450px;
+    height: 225px;
+    margin-left: 10px;
+    overflow:hidden;
+  }
+  .preloadBox
+  {
+    display: block;
+    height: 559px; 
+    background-color: #1a1a1a;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+ 
+   
+
+  </style>
+  
+  <script>
+       //On.mount !important for events and effects
+       var self = this;
+
+       this.on('mount', function() 
+       {
+        
+        
+
+
+        })
+            
+
+  </script>
+
+</preloadBoxTag>

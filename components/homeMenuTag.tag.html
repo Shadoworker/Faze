@@ -1,0 +1,54 @@
+<homeMenuTag>
+	
+   
+   	<div class="col s12 center homeMenuTag">
+  	   
+       <p class="homeMenuTagBox">
+         <span>
+           <img class="homeMenuTag_icon new" src="../assets/newproject_icon_big.png">
+         </span>
+         <span>
+           <img class="homeMenuTag_icon folder" src="../assets/folder_icon_big.png">
+         </span>
+       </p>
+
+  	</div>
+
+
+   <style type="text/css">
+     .homeMenuTagBox
+     {
+      margin-top: 10%;
+     }
+     .homeMenuTag
+      {display: none;position: absolute;top: 20%;}
+   </style>
+  
+  <script>
+  	   //On.mount !important for events and effects
+  	   var self = this;
+
+  	   this.on('mount', function() 
+  	   {
+        
+        $('.homeMenuTag_icon.new').on('click', function()
+          {
+
+              $('.homeMenuTag').animate({left : '-110%'}, 250, 'linear', function()
+                {
+                   $('.homeMenuTag').hide();
+                   $('.homeNewTag').show().css('opacity','1');
+                   $('.homeNewTag').animate({left : '0%'}, 250, 'linear', function(){});
+               
+                });
+              
+             
+
+          });
+         
+       })
+ 
+
+  </script>
+
+</homeMenuTag>

@@ -1,0 +1,118 @@
+<splashTag>
+  
+   
+    <div class="col s12 center splashBox z-depth-2" >
+      
+     <p class="full">
+        <img class="logo_splash" src="../assets/logo_splash.png">
+        
+        <br>
+        <div class="loadcontainer">
+          
+          <div class="loadline"></div>
+          <div class="loadcircle"></div>
+
+        </div>
+        
+        
+        </span>
+      </p> 
+    </div>
+
+
+
+
+    
+
+  <style type="text/css">
+  
+  .splashBox
+  {
+    position: absolute;
+    z-index: -20;
+    display: block;
+    height: 459px; /*The same size in main.js*/
+    top: 0;left: 0;
+    background-color: #000;
+    /*background-image: url('../assets/shqadoo_backsplash.png');*/
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .loadcontainer
+  {
+    margin-top: 50px;
+    width: 40%;
+    margin-left: 30%;
+    height: 3px;
+    background-image: url("../assets/grayline.png");
+
+    background-repeat:repeat-x;
+    background-position: center left;
+  }
+  .loadline
+  {
+    width: 0%;
+    margin-left:0%;
+    height: 2px;
+    /*position: absolute;*/
+    margin-top:1px; 
+    float: left;
+    background: -webkit-linear-gradient(left, #f2f2f2 0%, #d40055 100%);
+
+  }
+  .loadcircle
+  {
+    width: 4px;
+    margin-left: 0%;
+    height: 4px;
+    margin-top: ;
+    border-radius: 50%;
+    float: left;
+    background-color:#d40055; 
+    transform: scale(1);
+    transition: transform 0.3s ease-in;
+
+  }
+   
+
+  </style>
+  
+  <script>
+       //On.mount !important for events and effects
+       var self = this;
+
+       this.on('mount', function() 
+       {
+        
+        
+          $('.logo_splash').animate({opacity : 1} , 1250, 'linear', function()
+            {
+                 //Line animation 
+                $('.loadline').animate({width : '98%'}, 5000, 'linear',function()
+                // $('.loadline').animate({width : '98%'}, 500, 'linear',function()
+
+                  {
+                      $('.homeBox').fadeOut();
+                     
+                      let waitFade = setInterval(function()
+                        {
+                           ipc.send('showPreload');  
+                           clearInterval(waitFade);
+
+                        }, 500);
+                     
+
+                  });
+
+            });
+
+
+
+
+        })
+            
+
+  </script>
+
+</splashTag>

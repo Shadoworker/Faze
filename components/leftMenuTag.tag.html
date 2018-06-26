@@ -1,0 +1,125 @@
+<leftMenuTag>
+	
+   
+   	<div class="col center leftMenuTag" >
+  		 
+       <span class="menu_icon newfile" style="margin-top: 8px;">
+         <img src="../assets/newfile.png">
+       </span>
+
+       <span class="menu_icon select_icon">
+         <img src="../assets/select_icon.png">
+       </span>
+
+       <span class="menu_icon text_icon">
+         <img src="../assets/text_icon.png">
+       </span>
+
+       <span class="menu_icon rect_icon">
+         <img src="../assets/rect_icon.png">
+       </span>
+
+       <span class="menu_icon circle_icon">
+         <img src="../assets/circle_icon.png">
+       </span>
+
+       <span class="menu_icon bezier_icon">
+         <img src="../assets/bezier_icon.png">
+       </span>
+
+       <span class="menu_icon eraser_icon">
+         <img src="../assets/eraser_icon.png">
+       </span>
+
+
+  	</div>
+  
+ <style type="text/css">
+    div.col.leftMenuTag
+    {
+      padding: 0;
+      margin: 0;
+      background-color: #666666;
+    }
+    .leftMenuTag
+    {
+      width: 40px;
+      height: 20px;
+      position: absolute;
+      top: 46px;
+    }
+   .darkTheme
+   {
+    background-color: #1a1a1a;
+   }
+   span.menu_icon > img
+     {
+        margin-top: 7.5px;
+        width: 14.5px;
+        height: auto;
+     }
+  
+  span.menu_icon
+  {
+
+    display: block;
+    padding-bottom: 15px;
+    padding-left: 2px;
+    padding-right: 2px;
+    background-image: url('../assets/menu_line.png');
+    background-size: 60% 1px;
+    background-position: center 35px;
+    background-repeat: no-repeat;
+  }
+  span.menu_icon>img
+  {
+    /*padding: 2px 2px;*/
+    cursor: pointer;
+  }
+  span.menu_icon>img:hover
+  {
+    transform: scale(1.2);
+  }
+ </style>
+
+  <script>
+  	   //On.mount !important for events and effects
+  	   var self = this;
+  	   this.on('mount', function() 
+  	    {
+           
+            // var windW = window.innerWidth;
+            var windH = window.innerHeight;
+            
+           $('.leftMenuTag').css('height' , windH+'px');
+           $(window).on('resize' , function()
+             {
+               windH = window.innerHeight;
+               $('.leftMenuTag').css('height' , windH+'px');
+                
+             });
+
+
+
+           //////////////// CREATE NEW FILE  /////////////////
+
+                var newfile =  $('.newfile');
+                newfile.on('click' , ()=>{
+
+                    ipc.send('create_newfile_request');                
+                });
+
+
+           ///////////////////////////////////////////////////
+
+
+
+
+
+
+        });
+ 
+
+  </script>
+
+</leftMenuTag>

@@ -1,0 +1,74 @@
+<statesBoxTag>
+	
+   
+   	<div class="col center userBox statesBoxTag z-depth-1" style="padding: 0px;">
+  	   <div class="containerBox">
+   
+         <!-- <div class="iconBox" ></div> -->
+         <div class="col s12" style="padding: 0px;margin-top: 10px;">
+         <!--   <img style="width: 10px; height: auto;float: right;margin-right: 3.75%;" src="../assets/plus.png"> -->
+         </div>
+         <button style="float: right;" id="addstate">+</button>
+         <div class="col s12" style="padding: 0px;margin-top: 5px;">
+           
+           <div class="col stateitem" style="padding: 0px;">main</div>
+
+         </div>
+   
+       </div>
+
+  	</div>
+
+
+   <style type="text/css">
+    div.stateitem
+    {
+      width: 92.5%;
+      margin-left: 3.75%;
+      height: 36px;
+      border-radius: 3px 3px;
+      background-color: gray;
+      margin-bottom: 6px;
+    }
+    .statesBoxTag
+    {
+
+     position: absolute;
+    top: 413px;
+    width: 150px;
+    height: 38.4%;
+    left: 2%;
+    border-radius: 5px 5px;
+    background-color: #fff;
+    }
+    .containerBox
+    {
+      position: relative;
+    }
+
+   </style>
+  
+   <script>
+  	   //On.mount !important for events and effects
+  	   var self = this;
+       this.statenum = 0;
+       //Later ask for state name (input)
+  	   this.on('mount', function() 
+  	   {
+          
+
+          $('#addstate').on('click', function(){
+              var statename = 'state'+(self.statenum++);
+              self.update();
+              console.log('creating state...')
+              riot.store.trigger('addstate', statename);
+
+          })
+ 
+         
+       })
+ 
+
+  </script>
+
+</statesBoxTag>

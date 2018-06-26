@@ -1,0 +1,75 @@
+<headerTag>
+	
+   
+   	<div class="col s12 headerTag" >
+  		<span if={ showicon } class="left">
+  			<img class="logo_min" src="../assets/faze_logo_min.png">
+  		</span> 
+  		<span class="right">
+  			<span><img id="minimizer" class="win_top_icon" src="../assets/minimize_icon.png"></span>
+  			<span><img id="maximizer" class="win_top_icon" src="../assets/maximize_icon.png"></span>
+  			<span><img id="closer" class="win_top_icon" src="../assets/close_icon.png"></span>
+  		</span>
+
+   
+
+  	</div>
+  
+ <style type="text/css">
+   
+   .darkTheme
+   {
+    background-color: #1a1a1a;
+   }
+
+ </style>
+
+  <script>
+  	   //On.mount !important for events and effects
+  	   var self = this;
+  	   this.on('mount', function() 
+  	   {
+            self.wicons = opts.wicons
+            self.showicon = opts.showicon
+            self.darkTheme = opts.darkTheme
+            
+
+            //If true ,when this window is closed,the app is quitted
+       
+            self.closeAll = opts.closeAll
+
+            self.update()
+
+            if(self.darkTheme)
+            {
+              $('.headerTag').addClass('darkTheme');
+            }
+
+
+
+            // console.log(self.wicons);
+            for (var i = 0; i < self.wicons.length; i++)
+             {
+            	if(!(self.wicons[i].active))
+		    	  {$('.win_top_icon').eq(i).addClass('inactiveicon');}
+
+             }
+		   
+	   	   $('#minimizer').on('click', () => { ipc.send('minimize-me'); });
+  		   $('#maximizer').on('click', () => { ipc.send('maximize-me'); });
+  	     
+         if (!(self.closeAll))
+          {
+            $('#closer').on('click', () => { ipc.send('close-me'); });
+          }
+          else
+            $('#closer').on('click', () => { ipc.send('closeAll'); });
+
+
+
+        })
+ 
+
+  </script>
+
+</headerTag>

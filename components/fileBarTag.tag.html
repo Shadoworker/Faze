@@ -1,0 +1,87 @@
+<fileBarTag>
+  
+   
+    <div class="col fileBarTag z-depth-1"  >
+
+    <fileItemTag each="{ bulbe in fileBulbes }" index="{bulbe.index}" filename="{bulbe.filename}"></fileItemTag>
+       
+
+    </div>
+  
+ <style type="text/css">
+
+    div.col.fileBarTag
+    {
+      padding: 0;
+      margin: 0;
+      background-color: #f9f9f9;
+    }
+    .fileBarTag
+    {
+      width: 100%;
+      height: 35px;
+      position: absolute;
+      top: 46px;
+      left: 0px;
+
+    }
+   .darkTheme
+   {
+    background-color: #1a1a1a;
+   }
+   
+ </style>
+
+  <script>
+       //On.mount !important for events and effects
+       var self = this;
+       this.on('mount', function() 
+        {
+           
+           self.fileBulbes = [];
+
+
+
+            var windW = window.innerWidth;
+            // var windH = window.innerHeight;
+            
+           $('.fileBarTag').css('width' , windW+'px');
+           $(window).on('resize' , function()
+             {
+               windW = window.innerWidth;
+               $('.fileBarTag').css('width' , windW+'px');
+               
+             });
+
+          ////////////// New file bulbe handler on file-Bar /////////////////
+             ipc.on('create_newfile_response', ()=>{
+
+
+                var currentBulbes = $('.fileBarTag').children().length;
+                var newBulbe = {index:currentBulbes, filename :'Untitled'};
+
+                self.fileBulbes.push(newBulbe);
+          
+                self.update();
+               
+               // //////////////////Mounting////////////////
+                riot.mount('fileItemTag');
+                            //Play with CSS : Active Items
+               $('.fileNameBox').removeClass('active');
+               $('.fileNameBox').eq(currentBulbes).addClass('active');
+
+            
+            
+             }); 
+
+        ////////////////////////////////////////////////////////
+
+
+
+
+        });
+ 
+
+  </script>
+
+</fileBarTag>

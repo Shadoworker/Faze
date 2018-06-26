@@ -1,0 +1,97 @@
+<setsBoxTag>
+	
+   
+   	<div class="col center userBox setsBoxTag  z-depth-1">
+  	   <div class="containerBox">
+   
+         <!-- <div class="iconBox" ></div> -->
+         <div class="col s12" style="margin-bottom: 15px;"></div>
+         <div class="col s12 inputwrap">
+          <input type="text" name="" value="{key}">
+         </div>
+         <div class="col s6 inputwrap">
+          <span>x</span>
+          <input type="number" name="" value="{x}">
+         </div>         
+         <div class="col s6 inputwrap">
+          <span>y</span>
+          <input type="number" name="" value="{y}">
+         </div>
+         <div class="col s6 inputwrap">
+          <span>width</span>
+          <input type="number" name="" value="{width}">
+         </div>         
+         <div class="col s6 inputwrap">
+          <span>height</span>
+          <input type="number" name="" value="{height}">
+         </div>
+
+         <div class="col s12 inputwrap">
+          <span>scale</span>
+          <input type="range" name="" value="{scale}">
+         </div>
+
+   
+       </div>
+
+  	</div>
+
+
+   <style type="text/css">
+    input
+    {
+      width: 100% !important;
+      color: #fff !important;
+      letter-spacing: 1px;
+    }
+    .inputwrap
+    {
+      color: #fff;
+      font-family: 'caps';
+    }
+    .setsBoxTag
+    {
+
+      position: absolute;
+      top: 80px;
+      width: 250px;
+      height: 84.5%;
+      cursor: move;
+      right: 2%;
+      border-radius: 5px 5px;
+      background-color: #5c102f;
+    }
+    .containerBox
+    {
+      position: relative;
+    }
+
+   </style>
+  
+   <script>
+  	   //On.mount !important for events and effects
+  	   var self = this;
+
+  	   this.on('mount', function() 
+  	   {
+          
+
+             riot.store.on('objectselected', function(obj){
+                 console.log('hjk')
+                 self.key = obj.key;
+                 self.x = obj.x;
+                 self.y = obj.y;
+                 self.width = obj.width;
+                 self.height = obj.height;
+                 self.scale = obj.scale.x;
+                 self.update();
+
+             })
+ 
+         
+       })
+ 
+
+  </script>
+
+</setsBoxTag>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="../vendors/materialize/materialize.css">
+	<link rel="stylesheet" type="text/css" href="../vendors/materialize/main.css">
+</head>
+<body>
+
+ <style type="text/css">
+ 	/*.col
+ 	{border:solid 0.4px gray;}*/
+  .bottomline
+  {
+    position: absolute;
+    bottom: 0;
+    width: 0%;
+    height: 3px;
+    /*background-color: #d82169;*/
+    background: -webkit-linear-gradient(left, #d82169 0%, #29a69c 100%);
+
+  }
+ </style>
+
+  <div class="row homeBox">
+  	 
+     <headerTag></headerTag>
+     <splashTag></splashTag>
+
+     <!-- <homeMenuTag></homeMenuTag>
+     <homeNewTag></homeNewTag>
+     -->
+     <refTag></refTag>
+     
+   
+  </div>
+
+      <!-- ******************COMPONENTS ***********************-->
+
+    <script type="riot/tag" src="../components/headerTag.tag.html"></script>
+    <script type="riot/tag" src="../components/splashTag.tag.html"></script>
+    <script type="riot/tag" src="../components/homeMenuTag.tag.html"></script>
+    <script type="riot/tag" src="../components/homeNewTag.tag.html"></script>
+    <script type="riot/tag" src="../components/refTag.tag.html"></script>
+
+
+      <!-- **************************************************** -->
+
+
+  <script>window.$ = window.jQuery = require('../vendors/jquery/jquery.js');</script>
+  <script src="../vendors/script.js"></script>
+  <script src="../vendors/riot/riot.min.js"></script>
+   
+  <script type="text/javascript">
+  	 
+  	 const ipc = require('electron').ipcRenderer
+     const shell = require('electron').shell;
+     const os = require('os');
+
+     // riot.mount('*');
+     riot.mount('headerTag', {
+                      wicons : [ 
+                                  {active:false},
+                                  {active:false} , 
+                                  {active:false } 
+                                ],
+                      closeAll : true,
+                      showicon :false,
+                      darkTheme:false
+                     });
+    
+     riot.mount('splashTag');
+     // riot.mount('homeMenuTag');
+     // riot.mount('homeNewTag');
+     riot.mount('refTag');
+
+
+  </script> 
+</body>
+</html>

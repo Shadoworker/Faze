@@ -1,0 +1,658 @@
+<sceneBoxTag>
+	
+   
+   	<div class="col center userBox sceneBoxTag z-depth-1" style="padding: 0px;">
+  	     <div class="optsbtns " >
+           <div class="col s12" style="padding: 0px">
+              
+               <span>
+                 <img style="padding: 0px" class="col s12 opt-full opt " src="../assets/fullscreen.png">
+               </span>
+              
+               <span>
+                 <img style="padding: 0px" class="col s12 opt-switch opt " src="../assets/switchmode.png">
+               </span>
+
+               <span>
+                 <img style="padding: 0px" class="col s12 opt-preview opt" onclick={play} src="../assets/preview.png">
+               </span>
+
+                
+           </div>
+         </div> 
+
+         <div class="zoomopt">
+           <input class="zoom" type="number" value="100" step="5" min="25" max="300" name="">
+           <span style="color: #d40055;position: absolute;right: 5px;top: 3px;pointer-events: none;">%</span>
+         </div>
+
+
+        <div class="containerBox graphicView" >
+   
+ 
+
+
+
+
+         <div class="col canvas">
+           
+             <div id="gamescenecontainer" class="mob_land_view">
+              
+               <div id="overlay-loader">
+                 <div><img src="../assets/circle_icon.png" style="width: 40px; "></div>
+               </div>
+
+               <div>
+                 <img src="../assets/iphone_mob_land.png">
+               </div>
+               <div id="main">
+                 
+               </div>
+             </div>
+
+        <!--      <div class="mob_port_view">
+              
+               <div id="overlay-loader"></div>
+
+               <div>
+                 <img src="../assets/iphone_mob.png">
+               </div>
+
+               <div id="main"></div>
+
+
+             </div> -->
+
+
+         </div>
+
+   
+       </div>
+
+       <div class="containerBox codeView" >
+         <div class="ok-saved "></div>
+         <div class="col s12 statescontainer">
+            <div each="{ stateitem,i in states }" class="stateitem" contenteditable="">{stateitem}</div> 
+         </div>
+         <div id="search-box" class="col s6">
+           <input id="searchinputbox" type="text" name="">
+         </div>
+         <div id="codemirrorer" class="col" style="width: 100%;padding: 0;height: 100%;" >
+
+           
+       </div>
+
+    
+
+
+  	</div>
+
+
+   <style type="text/css">
+
+    div.ok-saved
+    {
+      position: absolute;
+      display: none;
+      top: 10%;
+      left: 20px;
+      z-index: 30;
+      width: 20px;height: 20px;
+      border-radius: 50%;
+      border:solid 4px #fff;
+      animation: pluc;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+      transition: all .2s ease;
+
+    }
+    div.ok-saved.greened
+    {
+      border-color: #d40055;
+      transition: all .2s ease;
+    }
+    div.statescontainer
+    {
+      position: relative;
+      height: 36px;
+      background-color: gainsboro;
+      overflow-y: hidden;
+      overflow-x: hidden;
+      padding: 0px !important
+    }
+
+    div.statescontainer:hover
+    { 
+      overflow-x: scroll; 
+    }
+    div.stateitem
+    {
+      position: relative;
+      float: left;
+      cursor: pointer;
+      height: 36px;
+      max-height: 36px;
+      line-height: 36px;
+      padding: 0px 34px;
+      background-color: #f2f2f2;
+      color: gray;
+      /*border: solid 0.5px #fff;*/
+      font-family: 'front';
+      letter-spacing: 1px;
+      border-radius: 0px 30px 0px 0px;
+      transition: all .2s ease;
+
+    }
+    div.stateitem:hover
+    {
+      opacity: 0.8;
+      transition: all .2s ease;
+    }
+    div.stateitem.active
+    {
+      background-color: #808080;
+      color: #fff;
+
+    }
+    pre.CodeMirror-line
+    {
+      text-indent: 40px !important;
+    } 
+    div#search-box
+    {
+      position: absolute;
+      display: none;
+      top: 40px;
+      width: 100%;
+      z-index: 20;
+    }
+    div#search-box>input
+    {
+      float: right;
+      background-color: #f2f2f2;
+      color: #808080;
+      width: 40% !important;
+    }
+    input.zoom
+    {
+      width: 50px;
+      padding: 5px;
+      border-radius: 5px 5px;
+      outline: none;
+      border:solid 0.5px #d40055;
+      color: #d40055;
+    }
+    .sceneBoxTag
+    {
+
+      position: absolute;
+      top: 80px;
+      width: 59%;
+      height: 70%;
+      /*cursor: move;*/
+      left: 17%;
+      border:solid 0.5px #f3f3f3;
+      border-radius: 5px 5px;
+      background-color: #fff;
+    }
+    .containerBox.graphicView
+    {
+      position: relative;
+      display: block;
+    }
+    .containerBox.codeView
+    {
+      position: relative;
+      height: 100%;
+      display: none;
+      background-color: #808080;
+      color: #fff;
+      text-align: left;
+    }
+
+    div.col.canvas
+    {
+      position: absolute;
+      z-index: 1;
+      padding: 0px;
+      width: 100%;
+      height: 75px;
+      /*background-color: red;*/
+      overflow: scroll;
+    }
+    div.mob_land_view>div>img
+    {
+      position: relative;
+      width: 90%;
+      z-index: 1;
+      margin-top: 60px;
+      -webkit-user-select:none;
+    }
+    div.mob_land_view>div#main
+    {
+      position: absolute;
+      z-index: 5;
+      width: 73.3%;
+      height: 67.1%;
+      top: 0px;
+      /*background-color: red;*/
+      margin-top: 10%;
+      margin-left: 12.4%;
+    }
+    div.mob_land_view>div#overlay-loader
+    {
+      position: absolute;
+      z-index: 6;
+      display: none;
+      width: 73.3%;
+      height: 67.1%;
+      top: 0px;
+      background-color: rgba(0,0,0,0.6);
+      margin-top: 10%;
+      margin-left: 12.4%;
+      text-align: center;
+
+    }
+
+    div.mob_port_view>div>img
+    {
+      position: relative;
+      width: 47%;
+      z-index: 1;
+      margin-top: 10px;
+      -webkit-user-select:none;
+    }
+    div.mob_port_view>div#main
+    {
+      position: absolute;
+      z-index: 5;
+      width: 41.3%;
+      height: 115.2%;
+      top: 0px;
+      background-color: red;
+      margin-top: 8.7%;
+      margin-left: 29.48%;
+    }    
+
+    div.mob_port_view>div#overlay-loader
+    {
+      position: absolute;
+      z-index: 6;
+      display: none;
+      width: 41.3%;
+      height: 115.2%;
+      top: 0px;
+      background-color: rgba(0,0,0,0.6);
+      margin-top: 8.7%;
+      margin-left: 29.48%;
+      text-align: center;
+    }    
+
+   div#overlay-loader > div
+   {
+     color: #fff;
+     margin-top: 25%;
+   }
+
+
+   @keyframes pluc {
+    0%   {transform: scale(0.99);}
+    10%   {transform: scale(0.90);}
+    25%  {transform: scale(0.80);}
+    50%  {transform: scale(0.70);}
+    75%  {transform: scale(0.80);}
+    90% {transform: scale(0.90);}
+    100% {transform: scale(0.99);}
+   }
+
+
+  div#overlay-loader > div > img
+   {
+      animation-name: pluc;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+   }
+
+    div.mob_land_view,div.mob_port_view
+    {
+      width: 100%;
+      /*transform: scale(0.7);*/
+      /*background-image: url('../assets/iphone_mob.png');*/
+      /*background-size: contain;*/
+    }
+
+     span
+     {
+      cursor: default;
+     }
+     span>img
+     {
+      cursor: pointer;
+     }
+    
+    div.zoomopt
+    {
+      position: absolute;
+      z-index: 3;
+      bottom: 10px;
+      right: 15px;
+    }
+
+    div.optsbtns
+    {
+      position: absolute;
+      z-index: 32;
+      width: 40px;
+      height: auto; /*to auto*/
+      /*background-color: red;*/
+      top:10px;right: -20px;
+    }
+    img.opt
+    {
+      margin-bottom: 8px;
+    }
+   </style>
+  
+   <script>
+  	   //On.mount !important for events and effects
+  	   var self = this;
+       /*JS beautify*/
+       var beautify = require('js-beautify').js;
+       var editor;
+       
+  	   this.on('mount', function() 
+  	   {
+        
+          self.activestateitem = 0;
+          self.recentlyUpdated = -1;
+
+         //Init codemirror
+          self.content = "var mono = monokai();";
+
+          self.update();
+
+          editor = CodeMirror(document.getElementById('codemirrorer'), {
+              value: self.content,
+              lineNumbers: true,
+              mode: "javascript",
+              // keyMap: "sublime",
+              autoCloseBrackets: true,
+              matchBrackets: true,
+              showCursorWhenSelecting: true,
+              hint: CodeMirror.hint.javascript,
+              theme: "monokai",
+              tabSize: 2
+          });
+
+       editor.on('keypress', function(editor, event){
+
+          if (true) {}
+            // type code and show autocomplete hint in the meanwhile
+            CodeMirror.commands.autocomplete(editor);
+        });
+         var sceneBoxH = $('.sceneBoxTag').height();
+
+         $('div.canvas').height(sceneBoxH+'px');
+
+          
+          $('.opt.opt-switch').on('click' , function(){
+
+             // console.log('switchmode');
+             $('.containerBox.graphicView').toggle();
+             $('.containerBox.codeView').toggle();
+             $('.zoomopt').toggle();
+
+          })
+
+
+
+         function loadContent()
+         {
+             var filename = self.states[self.activestateitem]+'.js';
+               //Getting file content
+               fs.readFile(projectDirectory+'\\states\\'+filename,'utf-8',(err,data) => {
+                  
+                    self.content  = data;
+                    self.update();
+                    editor.setValue(data);
+                    // console.log(eval(data));
+
+
+                });//Fs end
+         }
+           
+         loadContent();//First call
+         
+         $(document).on('mousemove', function(){
+       
+               $('.stateitem').on('click' , function(){
+
+                   $('.stateitem').removeClass('active');
+                   $(this).addClass('active');
+                   
+                   var activestateitemTemp = $(this).index();
+                   if(self.activestateitem !== activestateitemTemp)//Avoid multiple read
+                   {
+                      self.activestateitem = activestateitemTemp;
+                      self.update();
+                      loadContent();
+
+                   }
+                   // else
+                   // {
+                   //  if (self.recentlyUpdated == self.activestateitem)//If it's the recently updated
+                   //   {
+                   //      self.activestateitem = activestateitemTemp;
+                   //      loadContent();
+                   //      self.recentlyUpdated = -1;
+                   //      self.update();
+
+                   //   }
+                   // }
+        
+                })
+            })
+
+
+         //SAVING 
+         $(window).keypress(function(event) {
+              if (!(event.which == 115 && event.ctrlKey) && !(event.which == 19)) return true;
+              
+               // console.log('CTRL+S')
+               var filename = self.states[self.activestateitem]+'.js';
+               //Updating file content
+               var data = editor.getValue();
+                
+                fs.writeFile(projectDirectory+'\\states\\'+filename, data,(err) => {
+                  if(err){ console.log(err); return;}
+                     
+                      loading_animation()
+                       
+                   }); 
+
+              event.preventDefault();
+              return false;
+          });
+
+          self.updatestatestyle = function()
+            {
+               $('.stateitem').removeClass('active');
+               $('.stateitem').eq(self.activestateitem).addClass('active');
+            }
+
+         self.updatestatestyle();
+
+       }) //On mount
+
+        //Showing load effect : UI/UX
+        var loading_animation = function()
+         {
+             $('.ok-saved').show(100);
+              setTimeout(function(){
+
+                 $('.ok-saved').addClass('greened');
+                  
+              },1000)
+              setTimeout(function(){
+                 
+                 $('.ok-saved').hide(100);
+                 $('.ok-saved').removeClass('greened');
+
+              },1700)
+         } 
+       //States ie: created files in game project (names are stored in local array)
+       this.states = ['mainstate'];
+      
+       play()
+       {
+          var cacheModule = require.cache;
+
+          var main = $('#main');
+          var overlayLoader = $('#overlay-loader');
+          main.html('');//Set empty
+          overlayLoader.fadeIn(250);
+         /////////For new data
+          setTimeout(function(){
+          
+         
+            for (var i = 0; i < self.states.length; i++) {
+
+                 
+                killInCache(cacheModule , self.states[i]);
+                require('../gameproject/states/'+self.states[i]+'.js');
+                
+
+            }
+              //main.js must be loaded after all states
+               killInCache(cacheModule , 'main');
+               require('../gameproject/states/main.js');
+
+
+          },2000);
+         /////////For ui saf-safal
+          setTimeout(function(){
+             
+              overlayLoader.fadeOut(10);
+
+
+          },2800);
+          
+       }
+ 
+        
+       //To get when creating a project
+       var projectDirectory = 'C:\\Users\\Shadow\\Desktop\\General_works\\External_Works\\Kayelsoft\\Projects\\Internes\\faze\\Creation\\faze\\gameproject';
+
+       killInCache = function (cacheModule, statemodule) {
+         
+          var modulecached = projectDirectory+"\\"+"states\\"+statemodule+".js";
+          if(cacheModule.hasOwnProperty(modulecached)) 
+           { //Then remove from cache
+              
+              delete cacheModule[modulecached];
+              console.log('removed')
+
+           }//Else require will add it or update it in any case
+
+       }
+
+
+
+       /////////////CREATING NEW STATE //////////////////
+
+         riot.store.on('addstate', function(statename){
+
+               self.states.push(statename);
+               self.update();
+               self.updatestatestyle();
+               
+
+               var filename = statename+'.js';
+               //Generating file content
+             var data ='window.'+statename+' = function(game){};\n\n'+
+ 
+                        statename+'.prototype =\n'+ 
+                          '{\n'+
+                             ' \xa0\xa0\xa0preload : function()\n'+
+                                '\xa0\xa0\xa0\xa0{\n'+
+                              
+                                '\xa0\xa0\xa0\xa0} ,\n'+
+                               '\xa0\xa0\xa0create : function ()\n'+
+                                '\xa0\xa0\xa0\xa0{\n'+
+                                
+                                '\xa0\xa0\xa0\xa0},\n'+
+                               '\xa0\xa0\xa0update : function ()\n'+
+                                '\xa0\xa0\xa0\xa0{\n'+
+                                    
+                                '\xa0\xa0\xa0\xa0},\n' +
+                               '\xa0\xa0\xa0render : function()\n'+
+                                '\xa0\xa0\xa0\xa0{\n'+
+                                 '\xa0\xa0\xa0\xa0// kEEP EMPTY IF NO RENDER PROCESS\n'+
+                                '\xa0\xa0\xa0\xa0}\n'+
+               
+                      ' }//End of prototype';
+                
+                 fs.writeFile(projectDirectory+'\\states\\'+filename, data,(err) => {
+                  if(err){ console.log(err); return;}
+                       
+                  }); 
+
+         });
+
+       /////////////////////////////////////////////////
+       //////////////ADDING RECT OBJ///////////////////
+
+
+          riot.store.on('addrect', function(rectname){
+           
+              /*Adding new line to create method of current state file*/
+              var obj =  eval(self.content);
+              //Finding create method
+              var arr = Object.keys(obj).map(function(key){return obj[key]})
+              var body = '', bodyTemp = '';
+              for (var i = 0; i < arr.length; i++) {
+                
+                 if (arr[i].name === 'create') 
+                  {
+                    body = arr[i].toString();
+                    body = body.substring(body.indexOf('{') + 1, body.lastIndexOf('}') );
+                    bodyTemp = body;//Saving body temp.
+                  }
+              }
+              
+              //Creating new line(s)
+              var newline = 
+
+                            'this.'+rectname+' = this.add.graphics(this.world.centerX, this.world.centerY);\n'+
+                            'this.'+rectname+'.beginFill(0xFF0000, 1);\n'+
+                            'this.'+rectname+'.drawRect(0, 0, 150,100);\n'+
+                            'this.'+rectname+'.inputEnabled = true;\n'+
+                            'this.'+rectname+'.input.enableDrag();\n'+
+                            'this.'+rectname+'.input.useHandCursor = true;\n';
+
+              body = body + '\n '+newline+' \n ';
+
+              //Replace in str 'bodyTemp' with 'body'
+              var newcontent = self.content.replace(bodyTemp , body);
+              //beautify 
+              var newcontent = beautify(newcontent, { indent_size: 4, space_in_empty_paren: true });
+              //Save to file
+              fs.writeFile(projectDirectory+'\\states\\'+self.states[self.activestateitem]+'.js',newcontent,(err) => {
+                  if(err){ console.log(err); return;}
+
+                   loading_animation();
+                       
+                  });
+              //Update editor value & localcontent 'self.content'
+              editor.setValue(newcontent);
+              self.content = newcontent;
+              self.update();
+
+
+           });
+
+       ///////////////////////////////////////////////
+
+  </script>
+
+</sceneBoxTag>

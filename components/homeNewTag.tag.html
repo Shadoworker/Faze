@@ -1,0 +1,207 @@
+<homeNewTag>
+	
+   
+   	<div class="col s12 center homeNewTag">
+          
+          <span class="label" >INTERFACE</span>
+          <p class="deviceBox">
+            <input type="radio" class="device" name="device" checked="checked" id="device_phone">
+            <label for="device_phone">
+              <span>
+                <img class="device_icon" src="../assets/device_phone.png">
+              </span>
+            </label>
+            <input type="radio" class="device" name="device" id="device_browser">
+            <label for="device_browser">
+              <span>
+                <img class="device_icon" src="../assets/device_browser.png">
+              </span>
+            </label>
+            <input type="radio" class="device" name="device" id="device_custom">
+            <label for="device_custom">
+              <span>
+                <img class="device_icon" src="../assets/device_custom.png">
+              </span>
+            </label>
+         
+          <span class="custom_sizeBox" idf={ chcustomChecked }>
+            <span class="x_size">x</span>
+            <span>
+              <!-- <span class="labelizer">Largeur</span><br> -->
+              <span>
+                <input class="custom_size" type="number" value="1200" max="3000" id="custom_width">
+              </span> 
+              </span> 
+            <span>
+              <!-- <span class="labelizer">Hauteur</span><br> -->
+              <span>
+                <input class="custom_size" type="number" value="640" max="2000" id="custom_height">
+              </span>
+             </span>
+          </span>
+
+          </p>
+      
+
+       <p class="homeNewTagBox">
+        
+
+        
+
+         <span class="folderBox">
+            <span style="position: relative;"><img class="folder_selector" src="../assets/folder_icon_min.png"></span>
+            <span><input type="text" id="folder_save" disabled="" placeholder="C://users/shadow/desktop/myfolder"></span>
+         </span>
+         <br>
+         <span>
+           <input type="text" id="name_save" placeholder="NOM DE VOTRE PROJET">
+         </span>
+         <br>
+         <span class="btns">
+            <span><img class="btn_dialog create" src="../assets/create_icon.png"></span>
+            <span><img class="btn_dialog cancel" src="../assets/cancel_icon.png"></span>
+         </span>
+
+      </p>
+    
+
+  	</div>
+
+   <style type="text/css">
+     .folderBox
+     {
+      position: relative;
+     }     
+     .deviceBox
+     {
+      position: relative;
+      width: 100%;
+      /*margin-left: 16%;*/
+      background-color: #f2f2f2;
+      margin-top: 5px;
+      /*margin-left: -15px;*/
+      text-align: center;
+      margin-bottom: 5px;
+     }
+     .labelizer
+     {
+      font-family: 'caps';
+      font-size: 12px;
+      color: #ececec;
+     }
+     .custom_sizeBox
+     {
+      position: absolute;
+      top: 30px;
+      opacity: 0;
+     }
+     .x_size
+     {
+      position: absolute;
+      left: 5px;
+      top: 28%;
+      font-family: 'front';
+      color: gray
+      font-size: 14px;
+     }
+     
+     .custom_size
+     {
+      width: 60px;
+      height: 25px;
+      border:solid 0.5px #ececec;
+      color: gray;
+      margin-bottom: 5px;
+      font-family: 'caps';
+      font-size: 14px;
+      text-align: center;
+     }
+     .homeNewTagBox
+     {
+      /*margin-top: 10%;*/
+      position: relative;
+     }
+    .homeNewTag
+      {display: none;left: 110%;position: absolute;top: 10%;} 
+    .label
+    {position:absolute;left:20%; top:5px;font-size: 12px; font-family: 'caps'; color: gray; z-index: 80;}
+   </style>
+  
+  <script>
+  	   //On.mount !important for events and effects
+  	   var self = this;
+
+  	   this.on('mount', function() 
+  	   {
+         
+         self.chcustomChecked = false;
+
+
+         
+         var devices = $('input.device');
+         devices.each(function(ind)
+          {
+            devices.eq(ind).on('click' , function()
+              {
+                 
+                  if(ind == 2)
+                  {
+                    $('.custom_sizeBox').animate({opacity: 1}, 250, 'linear', function()
+                      {
+                        self.chcustomChecked = true;
+                      });
+                    
+                  }
+                  else
+                  {
+                    $('.custom_sizeBox').animate({opacity: 0}, 250, 'linear', function()
+                      {
+                        self.chcustomChecked = false;
+                      });
+                   }
+                  self.update();
+              });
+          });
+
+         $('.btn_dialog.cancel').on('click', function()
+          {
+
+              $('.homeNewTag').animate({opacity : 0}, 250, 'linear', function()
+                {
+                   $('.homeNewTag').hide();
+                   $('.homeNewTag').css('left' , '110%');
+                   $('.homeMenuTag').show();
+                   $('.homeMenuTag').animate({left : '0%'}, 250, 'linear', function(){});
+               
+                });
+              
+             
+
+          });
+
+        $('#folder_save').attr('value',os.homedir());
+      
+
+     ////////////  PROCESS  /////////////////////
+
+     $('.folder_selector').on('click', function (event) {
+        ipc.send('open_project_creation_path')
+      })
+
+      ipc.on('selected_project_creation_path', function (event, path) {
+    
+        $('#folder_save').attr('value', path);
+    
+      })
+
+
+ 
+         
+
+
+    self.update() }) //On mount 
+ 
+
+  </script>
+
+</homeNewTag>
